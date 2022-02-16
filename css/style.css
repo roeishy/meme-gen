@@ -242,6 +242,10 @@ header {
   border-radius: 10px;
 }
 
+#meme-canvas{
+  cursor: grab;
+}
+
 .btns img{
   width: 2vh;
   height: 2vh;

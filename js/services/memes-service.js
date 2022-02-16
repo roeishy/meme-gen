@@ -26,14 +26,16 @@ var gMeme = {
     selectedLineIdx: 0,
     lines: [
         {
+            drag: false,
             txt: 'enter text',
-            size: 20,
+            size: 50,
             align: 'left',
             color: 'red',
             x: 10,
             y: 100
         },
         {
+            drag: false,
             txt: 'enter text',
             size: 40,
             align: 'left',
@@ -59,7 +61,6 @@ function setImg(id) {
 
 function selectLine(num) {
     gMeme.selectedLineIdx = num;
-    console.log('line sel:', gMeme.selectedLineIdx);
 }
 
 function getLine() {
@@ -72,4 +73,21 @@ function getMeme() {
 
 function setLineTxt(txt) {
     gMeme.lines[gMeme.selectedLineIdx].txt = txt;
+}
+
+function setLineWidth(width, idx) {
+    gMeme.lines[idx].width = width
+}
+
+function isTxtClicked(pos, line) {
+    return (pos.x >= line.x && pos.x <= line.x + line.width && pos.y >= line.y - line.size && pos.y <= line.y);
+}
+
+function setLineDrag(bool) {
+    gMeme.lines[gMeme.selectedLineIdx].drag = bool;
+}
+
+function setLinePos(posDelta) {
+    gMeme.lines[gMeme.selectedLineIdx].x += posDelta.x;
+    gMeme.lines[gMeme.selectedLineIdx].y += posDelta.y;
 }
