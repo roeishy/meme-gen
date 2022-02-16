@@ -40,6 +40,7 @@ function drawText(line) {
     gCtx.strokeStyle = line.color;
     gCtx.fillStyle = line.color;
     gCtx.font = `${line.size}px Arial`;
+    gCtx.textAlign = line.align;
     gCtx.fillText(line.txt, line.x, line.y);
     gCtx.strokeText(line.txt, line.x, line.y);
 }
@@ -122,4 +123,26 @@ function getEvPos(ev) {
         }
     }
     return pos
+}
+
+function onIncDec(isInc) {
+    var line = getLine()
+    if (isInc && line.size + 1 < 80) {
+        line.size++;
+        setLineSize(line.size)
+        initCanvas()
+        return;
+    }
+    else if (!isInc && line.size - 1 > 10) {
+        line.size--;
+        setLineSize(line.size);
+        initCanvas()
+        return;
+    }
+}
+
+function onAlign(alignDir) {
+    setLineAlign(alignDir);
+    // gCtx.clearRect(0, 0, gCanvas.width, gCanvas.height);
+    initCanvas();
 }

@@ -29,19 +29,19 @@ var gMeme = {
             drag: false,
             txt: 'enter text',
             size: 50,
-            align: 'left',
+            align: 'center',
             color: 'red',
-            x: 10,
-            y: 100
+            x: 225,
+            y: 50
         },
         {
             drag: false,
             txt: 'enter text',
             size: 40,
-            align: 'left',
+            align: 'center',
             color: 'red',
-            x: 10,
-            y: 200
+            x: 225,
+            y: 400
         }
     ]
 }
@@ -80,7 +80,14 @@ function setLineWidth(width, idx) {
 }
 
 function isTxtClicked(pos, line) {
-    return (pos.x >= line.x && pos.x <= line.x + line.width && pos.y >= line.y - line.size && pos.y <= line.y);
+    if (line.align === 'center') {
+        console.log('center');
+        return ((pos.x <= line.x + line.width / 2 && pos.x >= line.x - line.width / 2) && pos.y >= line.y - line.size && pos.y <= line.y);
+    }
+    if (line.align === 'left') {
+        return (pos.x >= line.x && pos.x <= line.x + line.width && pos.y >= line.y - line.size && pos.y <= line.y);
+    }
+    return (pos.x <= line.x && pos.x >= line.x - line.width && pos.y >= line.y - line.size && pos.y <= line.y);
 }
 
 function setLineDrag(bool) {
@@ -90,4 +97,12 @@ function setLineDrag(bool) {
 function setLinePos(posDelta) {
     gMeme.lines[gMeme.selectedLineIdx].x += posDelta.x;
     gMeme.lines[gMeme.selectedLineIdx].y += posDelta.y;
+}
+
+function setLineSize(size) {
+    gMeme.lines[gMeme.selectedLineIdx].size = size;
+}
+
+function setLineAlign(align) {
+    gMeme.lines[gMeme.selectedLineIdx].align = align;
 }
