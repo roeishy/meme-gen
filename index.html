@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>PSD 2 HTML - Grid ex!</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body onload="init()">
+
+    <header>
+        <section class="container header-wrapper flex align-center">
+            <div class="logo flex-1">
+                meme gen
+            </div>
+            <nav id="mainMenu" class="main-menu-wrapper">
+                <ul class="main-menu clean-list flex align-center">
+                    <li>
+                        <a href="#" class="active">galery</a>
+                    </li>
+                    <li>
+                        <a href="#">memes</a>
+                    </li>
+                    <li>
+                        <a href="#">about</a>
+                    </li>
+                </ul>
+                <button class="toggle-menu-btn fa" onclick="toggleMenu()" alt="Open main menu"></button>
+                <div class="toggle-menu-screen screen" onclick="toggleMenu()" alt="toggle main menu"></div>
+            </nav>
+
+        </section>
+    </header>
+
+    <datalist id="fonts-list">
+        <option value="impact">
+        <option value="animal">
+        <option value="happy">
+        <option value="movies">
+    </datalist>
+
+
+
+    <datalist id="memes">
+        <option value="funny">
+        <option value="animal">
+        <option value="happy">
+        <option value="movies">
+    </datalist>
+
+    <main class="gallery">
+        <div class="flex justify-center align-center">
+            <input id="search-bar" list="memes" type="text" placeholder="search" oninput="filter(this.value)">
+        </div>
+        <section class="grid-container">
+        </section>
+    </main>
+
+    <main class="editor hide">
+        <div class="flex justify-center align-center">
+            <canvas id="meme-canvas" height="450" width="450"></canvas>
+            <section class="btns">
+                <input class="txt-input" type="text">
+                <button class="add-row">
+                    <img src="images/icons/add.png">
+                </button>
+                <button class="del-row">
+                    <img src="images/icons/trash.png">
+                </button>
+                <button class="switch">
+                    <img src="images/icons/switch.png">
+                </button>
+                <button class="align-c">
+                    <img src="images/icons/align-center.png">
+                </button>
+                <button class="align-l">
+                    <img src="images/icons/align-left.png">
+                </button>
+                <button class="align-r">
+                    <img src="images/icons/align-right.png" ">
+                </button>
+                <button class=" brush">
+                    <img src="images/icons/brush.png">
+                </button>
+                <button class="dec">
+                    <img src="images/icons/decrease.png">
+                </button>
+                <button class="inc">
+                    <img src="images/icons/increase.png">
+                </button>
+                <button class="stroke">
+                    <img src="images/icons/text-stroke.png">
+                </button>
+                <button class="brush">
+                    <img src="images/icons/brush.png">
+                </button>
+                <input class="fonts" id="fonts" list="fonts-list">
+            </section>
+        </div>
+    </main>
+
+
+    <script src="js/services/memes-service.js"></script>
+    <script src="js/gallery-controller.js"></script>
+    <script src="js/editor-controller.js"></script>
+
+</body>
+
+</html>
