@@ -63,14 +63,15 @@
         <div class="flex justify-center align-center">
             <canvas id="meme-canvas" height="450" width="450"></canvas>
             <section class="btns">
-                <input class="txt-input" type="text">
+                <input id="txt-input" class="txt-input" type="text" oninput="onTxtInput(this.value)"
+                    placeholder="enter text">
                 <button class="add-row">
                     <img src="images/icons/add.png">
                 </button>
                 <button class="del-row">
                     <img src="images/icons/trash.png">
                 </button>
-                <button class="switch">
+                <button class="switch" onclick="onSwitch()">
                     <img src="images/icons/switch.png">
                 </button>
                 <button class="align-c">

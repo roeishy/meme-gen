@@ -26,10 +26,20 @@ var gMeme = {
     selectedLineIdx: 0,
     lines: [
         {
-            txt: 'I never eat Falafel',
+            txt: 'enter text',
             size: 20,
             align: 'left',
-            color: 'red'
+            color: 'red',
+            x: 10,
+            y: 100
+        },
+        {
+            txt: 'enter text',
+            size: 40,
+            align: 'left',
+            color: 'red',
+            x: 10,
+            y: 200
         }
     ]
 }
@@ -45,4 +55,21 @@ function getImgs(key) {
 
 function setImg(id) {
     gMeme.selectedImgId = id;
+}
+
+function selectLine(num) {
+    gMeme.selectedLineIdx = num;
+    console.log('line sel:', gMeme.selectedLineIdx);
+}
+
+function getLine() {
+    return gMeme.lines[gMeme.selectedLineIdx]
+}
+
+function getMeme() {
+    return gMeme;
+}
+
+function setLineTxt(txt) {
+    gMeme.lines[gMeme.selectedLineIdx].txt = txt;
 }

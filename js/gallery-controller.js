@@ -9,7 +9,7 @@ function init() {
 function renderGallery() {
     const imgs = getImgs(gFilterBy);
     var strHTML = imgs.map(img =>
-        `<div class="card"><img src="${img.url}" onclick="onImg(${img.id})" /></div>`
+        `<div class="card"><img class="img${img.id}" src="${img.url}" onclick="onImg(${img.id})" /></div>`
     )
     document.querySelector('.grid-container').innerHTML = strHTML.join('');
 }
