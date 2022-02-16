@@ -23,7 +23,7 @@ function onImg(id) {
     setImg(id);
     document.querySelector('.gallery').classList.toggle("hide")
     document.querySelector('.editor').classList.toggle("hide")
-    initCanvas(id);
+    initCanvas();
 }
 
 

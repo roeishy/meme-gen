@@ -4,11 +4,11 @@ var gCanvas;
 var gCtx;
 
 
-function initCanvas(id) {
+function initCanvas() {
+    var meme = getMeme();
     createCanvas();
-    drawImgFromlocal(id)
+    drawImgFromlocal(meme.selectedImgId)
     meme.lines.forEach(line => drawText(line))
-
 }
 
 function createCanvas() {
@@ -24,9 +24,7 @@ function drawImgFromlocal(id) {
 function onTxtInput(txt) {
     setLineTxt(txt);
     gCtx.clearRect(0, 0, gCanvas.width, gCanvas.height);
-    var meme = getMeme();
-    drawImgFromlocal(meme.selectedImgId);
-    // meme.lines.forEach(line => drawText(line))
+    initCanvas()
 }
 
 function drawText(line) {
