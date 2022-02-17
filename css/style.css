@@ -57,7 +57,14 @@
 
 .logo {
   font-family: impact, serif;
-  font-size: 2.5rem; }
+  font-size: 2.5rem;
+  overflow: hidden;
+}
+
+.logo img{
+  width: 100px;
+  height: 100px;
+}
 
 .flex {
   display: flex; }
@@ -82,7 +89,12 @@ html {
   color: #292929; }
 
 body {
-  margin: 0; }
+  background-image: url("../images/bg.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin: 0;
+  height: 100vh;
+ }
 
 button {
   cursor: pointer; }
@@ -175,7 +187,7 @@ header {
   grid-template-columns: repeat(6, minmax(9vh, 0fr));
   grid-auto-rows: 9vh;
   gap: 10px;
-  background-color: #dddddd;
+  background-color: #dddddd8c;
   padding: 10px;
 }
 
@@ -227,14 +239,13 @@ header {
 /*---------- editor  ----------*/
 .editor-container{
   gap: 10px;
-  background-color: #58c93a;
+  background-color: #58c93a8c;
   padding: 10px;
   border-radius: 10px;
 }
 
 #meme-canvas{
   cursor: grab;
-  /* width: 100%; */
 }
 
 .btns img{

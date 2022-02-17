@@ -21,8 +21,10 @@ const gImgs = [
     { id: 18, url: 'images/square-meme-images/18.jpg', keywords: ['movies'] },
 ];
 
-const STORAGE_KEY = 'savedMemes'
+const STORAGE_KEY = 'savedMemes';
 var gSavedMemes = [];
+
+
 
 var gMeme = {
     selectedImgId: 0,
@@ -53,8 +55,11 @@ var gMeme = {
     ]
 }
 
-saveToStorage('defaultLines', gMeme.lines)
+saveToStorage('defaultLines', gMeme.lines);
 gSavedMemes = loadFromStorage(STORAGE_KEY);
+if (gSavedMemes === null) {
+    gSavedMemes = []
+}
 
 function defaultLines() {
     gMeme.lines = loadFromStorage('defaultLines');
