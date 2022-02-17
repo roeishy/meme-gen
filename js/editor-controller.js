@@ -20,6 +20,7 @@ function initCanvas() {
 
 function createCanvas() {
     gCanvas = document.getElementById('meme-canvas');
+    gCanvas.height = gCanvas.width;
     gCtx = gCanvas.getContext('2d');
 }
 
@@ -37,7 +38,7 @@ function onTxtInput(txt) {
 
 function drawText(line) {
     gCtx.lineWidth = 1;
-    gCtx.strokeStyle = line.color;
+    gCtx.strokeStyle = line.stroke;
     gCtx.fillStyle = line.color;
     gCtx.font = `${line.size}px Arial`;
     gCtx.textAlign = line.align;
@@ -58,9 +59,17 @@ function addListeners() {
     addMouseListeners()
     addTouchListeners()
     window.addEventListener('resize', () => {
-        resizeCanvas()
-        renderCanvas()
+        // resizeCanvas()
+        // renderCanvas()
     })
+}
+
+function resizeCanvas() {
+    // var elContainer = document.getElementById('meme-canvas')
+    // // Note: changing the canvas dimension this way clears the canvas
+    // gCanvas.width = elContainer.offsetWidth - 20
+    // // Unless needed, better keep height fixed.
+    // //   gCanvas.height = elContainer.offsetHeight
 }
 
 function addMouseListeners() {

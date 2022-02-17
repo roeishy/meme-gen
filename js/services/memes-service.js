@@ -30,8 +30,9 @@ var gMeme = {
             txt: 'enter text',
             size: 50,
             align: 'center',
-            color: 'red',
-            x: 225,
+            color: 'white',
+            stroke: 'black',
+            x: 200,
             y: 50
         },
         {
@@ -39,9 +40,10 @@ var gMeme = {
             txt: 'enter text',
             size: 40,
             align: 'center',
-            color: 'red',
-            x: 225,
-            y: 400
+            color: 'white',
+            stroke: 'black',
+            x: 200,
+            y: 350
         }
     ]
 }
@@ -81,7 +83,6 @@ function setLineWidth(width, idx) {
 
 function isTxtClicked(pos, line) {
     if (line.align === 'center') {
-        console.log('center');
         return ((pos.x <= line.x + line.width / 2 && pos.x >= line.x - line.width / 2) && pos.y >= line.y - line.size && pos.y <= line.y);
     }
     if (line.align === 'left') {

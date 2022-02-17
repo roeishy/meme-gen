@@ -244,6 +244,7 @@ header {
 
 #meme-canvas{
   cursor: grab;
+  /* width: 100%; */
 }
 
 .btns img{
