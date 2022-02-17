@@ -263,12 +263,13 @@ header {
 .btns{
   display: grid;
   grid-template-columns: repeat(5,1fr) ;
-  grid-template-rows: 1fr 0.5fr 2fr 0.5fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
   grid-template-areas:
   "txt-input txt-input txt-input txt-input txt-input"
   ". switch add-line del-line ."
   "inc dec align-l align-c align-r"
   "fonts fonts fonts brush strokee"
+  ". facebook download upload ."
   ;
   gap: 10px;
   background-color: #dddddd;
@@ -341,3 +342,50 @@ header {
 .fonts{
   grid-area: fonts;
 }
+
+.facebook{
+  grid-area: facebook;
+}
+
+.download{
+  grid-area: download;
+}
+
+.upload{
+  grid-area: upload;
+}
+
+/* .button1 {
+  appearance: auto;
+    -webkit-writing-mode: horizontal-tb !important;
+    font-style: ;
+    font-variant-ligatures: ;
+    font-variant-caps: ;
+    font-variant-numeric: ;
+    font-variant-east-asian: ;
+    font-weight: ;
+    font-stretch: ;
+    font-size: ;
+    font-family: ;
+    text-rendering: auto;
+    color: -internal-light-dark(black, white);
+    letter-spacing: normal;
+    word-spacing: normal;
+    line-height: normal;
+    text-transform: none;
+    text-indent: 0px;
+    text-shadow: none;
+    display: inline-block;
+    text-align: center;
+    align-items: flex-start;
+    cursor: default;
+    box-sizing: border-box;
+    background-color: -internal-light-dark(rgb(239, 239, 239), rgb(59, 59, 59));
+    margin: 0em;
+    padding: 1px 6px;
+    border-width: 2px;
+    border-style: outset;
+    border-color: -internal-light-dark(rgb(118, 118, 118), rgb(133, 133, 133));
+    border-image: initial;
+    color:gray;
+} */

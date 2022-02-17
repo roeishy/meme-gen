@@ -84,6 +84,20 @@ function addTouchListeners() {
     gCanvas.addEventListener('touchend', onUp)
 }
 
+function drawRect() {
+    gCtx.clearRect(0, 0, gCanvas.width, gCanvas.height);
+    initCanvas()
+    const line = getLine()
+    gCtx.beginPath();
+    if (line.align === 'center')
+        gCtx.rect(line.x - (line.width / 2), line.y - line.size, line.width, line.size)
+    if (line.align === 'left')
+        gCtx.rect(line.x, line.y - line.size, line.width, line.size)
+    if (line.align === 'right')
+        gCtx.rect(line.x - line.width, line.y - line.size, line.width, line.size)
+    gCtx.stroke();
+}
+
 function onDown(ev) {
     const pos = getEvPos(ev)
     gMousePos = pos;
@@ -98,6 +112,7 @@ function onDown(ev) {
             setLineDrag(true);
         }
     }
+    drawRect()
     document.getElementById('meme-canvas').style.cursor = 'grabbing'
 }
 
@@ -113,6 +128,7 @@ function onMove(ev) {
         setLinePos(posDelta);
         gCtx.clearRect(0, 0, gCanvas.width, gCanvas.height);
         initCanvas()
+        drawRect()
     }
 }
 
@@ -182,4 +198,47 @@ function onAddLine() {
 function onDeleteLine() {
     deleteLine()
     initCanvas()
+}
+
+
+function uploadImg() {
+    const imgDataUrl = gCanvas.toDataURL("image/jpeg");
+    // A function to be called if request succeeds
+    function onSuccess(uploadedImgUrl) {
+        window.open(`https://www.facebook.com/sharer/sharer.php?u=${uploadedImgUrl}&t=${uploadedImgUrl}`)
+    }
+    doUploadImg(imgDataUrl, onSuccess);
+}
+
+function doUploadImg(imgDataUrl, onSuccess) {
+
+    const formData = new FormData();
+    formData.append('img', imgDataUrl)
+
+    fetch('//ca-upload.com/here/upload.php', {
+        method: 'POST',
+        body: formData
+    })
+        .then(res => res.text())
+        .then((url) => {
+            console.log('Got back live url:', url);
+            onSuccess(url)
+        })
+        .catch((err) => {
+            console.error(err)
+        })
+}
+
+function downloadImg(elLink) {
+    var imgContent = gCanvas.toDataURL('image/jpeg')
+    download(imgContent);
+}
+
+function download(url) {
+    const a = document.createElement('a')
+    a.href = url
+    a.download = 'meme.jpg'
+    document.body.appendChild(a)
+    a.click()
+    document.body.removeChild(a)
 }
