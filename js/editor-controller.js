@@ -7,8 +7,13 @@ var gMousePos;
 
 
 function initCanvas(bool = false) {
+    //return to default
     if (bool) {
         defaultLines()
+        document.getElementById('txt-input').value = 'Enter Text'
+        document.getElementById('fonts').value = 'impact'
+        document.getElementById('text-color').value = '#FFFFFF'
+        document.getElementById('stroke-color').value = '#000'
     }
     var meme = getMeme();
     createCanvas();
@@ -174,7 +179,6 @@ function onIncDec(isInc) {
 
 function onAlign(alignDir) {
     setLineAlign(alignDir);
-    // gCtx.clearRect(0, 0, gCanvas.width, gCanvas.height);
     initCanvas();
 }
 
@@ -206,7 +210,6 @@ function onDeleteLine() {
 
 function uploadImg() {
     const imgDataUrl = gCanvas.toDataURL("image/jpeg");
-    // A function to be called if request succeeds
     function onSuccess(uploadedImgUrl) {
         window.open(`https://www.facebook.com/sharer/sharer.php?u=${uploadedImgUrl}&t=${uploadedImgUrl}`)
     }
