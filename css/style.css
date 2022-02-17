@@ -47,9 +47,7 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale; }
 
-/* Breakpoint mixins */
-/* Size Functions */
-/* Layout mixins */
+
 .clean-list {
   list-style-type: none;
   margin: 0;
