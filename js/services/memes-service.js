@@ -25,7 +25,7 @@ const STORAGE_KEY = 'savedMemes';
 var gSavedMemes = [];
 
 
-
+//some default meme values
 var gMeme = {
     selectedImgId: 0,
     selectedLineIdx: 0,
@@ -55,16 +55,18 @@ var gMeme = {
     ]
 }
 
-saveToStorage('defaultLines', gMeme.lines);
-gSavedMemes = loadFromStorage(STORAGE_KEY);
+saveToStorage('defaultLines', gMeme.lines);//save the default to storage
+gSavedMemes = loadFromStorage(STORAGE_KEY);//gets the saved memes from storage
 if (gSavedMemes === null) {
     gSavedMemes = []
 }
 
+//set gMeme.lines to defualt
 function defaultLines() {
     gMeme.lines = loadFromStorage('defaultLines');
 }
 
+//add new line to the center 
 function addLine() {
     var newLine = {
         drag: false,
@@ -80,11 +82,12 @@ function addLine() {
     gMeme.lines.push(newLine);
 }
 
+//delete line from gMeme
 function deleteLine() {
     gMeme.lines.splice(gMeme.selectedLineIdx, 1)
 }
 
-
+//gets string to fillter the imgs by, returns the imgs
 function getImgs(key) {
     if (key === '') {
         return gImgs;
@@ -117,6 +120,7 @@ function setLineWidth(width, idx) {
     gMeme.lines[idx].width = width
 }
 
+//chack if the line was clicked, each align needs a diffrent statement
 function isTxtClicked(pos, line) {
     if (line.align === 'center') {
         return ((pos.x <= line.x + line.width / 2 && pos.x >= line.x - line.width / 2) && pos.y >= line.y - line.size && pos.y <= line.y);

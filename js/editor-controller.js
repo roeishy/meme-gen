@@ -17,8 +17,8 @@ function initCanvas(bool = false) {
     }
     var meme = getMeme();
     createCanvas();
-    drawImgFromlocal(meme.selectedImgId)
-    for (var i = 0; i < meme.lines.length; i++) {
+    drawImg(meme.selectedImgId)
+    for (var i = 0; i < meme.lines.length; i++) {//draw all of the lines
         drawText(meme.lines[i])
         var width = gCtx.measureText(meme.lines[i].txt).width;
         setLineWidth(width, i);
@@ -32,18 +32,20 @@ function createCanvas() {
     gCtx = gCanvas.getContext('2d');
 }
 
-function drawImgFromlocal(id) {
+//draw the selected img on the canvas
+function drawImg(id) {
     var elImg = document.querySelector(`.img${id}`);
     gCtx.drawImage(elImg, 0, 0, gCanvas.width, gCanvas.height)
 }
 
+//gets string andupdates the model cur line, clear the canvas and rendering
 function onTxtInput(txt) {
     setLineTxt(txt);
     gCtx.clearRect(0, 0, gCanvas.width, gCanvas.height);
     initCanvas()
-
 }
 
+//gets line obj and draw text by its keys
 function drawText(line) {
     gCtx.lineWidth = 1;
     gCtx.strokeStyle = line.stroke;
@@ -54,30 +56,19 @@ function drawText(line) {
     gCtx.strokeText(line.txt, line.x, line.y);
 }
 
-function onSwitch() {
-    var meme = getMeme();
-    var numOfLines = meme.lines.length
-    var curLineIdx = meme.selectedLineIdx
-    var nextLineIdx = curLineIdx === numOfLines - 1 ? 0 : +1;
-    selectLine(nextLineIdx);
-    document.getElementById('txt-input').value = meme.lines[nextLineIdx].txt
-}
+// function onSwitch() {
+//     var meme = getMeme();
+//     var numOfLines = meme.lines.length
+//     var curLineIdx = meme.selectedLineIdx
+//     var nextLineIdx = curLineIdx === numOfLines - 1 ? 0 : +1;
+//     selectLine(nextLineIdx);
+//     document.getElementById('txt-input').value = meme.lines[nextLineIdx].txt
+// }
+
 
 function addListeners() {
     addMouseListeners()
     addTouchListeners()
-    // window.addEventListener('resize', () => {
-    // resizeCanvas()
-    // renderCanvas()
-    // })
-}
-
-function resizeCanvas() {
-    // var elContainer = document.getElementById('meme-canvas')
-    // // Note: changing the canvas dimension this way clears the canvas
-    // gCanvas.width = elContainer.offsetWidth - 20
-    // // Unless needed, better keep height fixed.
-    // //   gCanvas.height = elContainer.offsetHeight
 }
 
 function addMouseListeners() {
@@ -92,6 +83,7 @@ function addTouchListeners() {
     gCanvas.addEventListener('touchend', onUp)
 }
 
+//draw rect around the selected line
 function drawRect() {
     gCtx.clearRect(0, 0, gCanvas.width, gCanvas.height);
     initCanvas()
@@ -106,6 +98,7 @@ function drawRect() {
     gCtx.stroke();
 }
 
+//on mouse down ev, chacks if the mouse pos is in the text area
 function onDown(ev) {
     const pos = getEvPos(ev)
     gMousePos = pos;
@@ -113,6 +106,7 @@ function onDown(ev) {
     for (var i = 0; i < meme.lines.length; i++) {
         if (isTxtClicked(pos, meme.lines[i])) {
             selectLine(i);
+            //update the editor values
             document.getElementById('txt-input').value = meme.lines[i].txt
             document.getElementById('fonts').value = meme.lines[i].font
             document.getElementById('text-color').value = meme.lines[i].color
@@ -124,6 +118,7 @@ function onDown(ev) {
     document.getElementById('meme-canvas').style.cursor = 'grabbing'
 }
 
+//on mouse move ev, renders the line in its new pos
 function onMove(ev) {
     var line = getLine()
     if (line.drag) {
@@ -140,11 +135,13 @@ function onMove(ev) {
     }
 }
 
+//on mouse up ev, stops the drop&drag
 function onUp() {
     setLineDrag(false);
     document.getElementById('meme-canvas').style.cursor = 'grab'
 }
 
+//get an ev and returns its pos
 function getEvPos(ev) {
     var pos = {
         x: ev.offsetX,
@@ -161,6 +158,7 @@ function getEvPos(ev) {
     return pos
 }
 
+//increase and decrease the font size
 function onIncDec(isInc) {
     var line = getLine()
     if (isInc && line.size + 1 < 80) {
@@ -207,15 +205,16 @@ function onDeleteLine() {
     initCanvas()
 }
 
-
-function uploadImg() {
-    const imgDataUrl = gCanvas.toDataURL("image/jpeg");
+//share the img on face book
+function onShareImg() {
+    const imgDataUrl = gCanvas.toDataURL("image/jpeg");//create img url
     function onSuccess(uploadedImgUrl) {
         window.open(`https://www.facebook.com/sharer/sharer.php?u=${uploadedImgUrl}&t=${uploadedImgUrl}`)
     }
     doUploadImg(imgDataUrl, onSuccess);
 }
 
+//uploads the img to an upload server
 function doUploadImg(imgDataUrl, onSuccess) {
 
     const formData = new FormData();
@@ -240,6 +239,7 @@ function downloadImg() {
     download(imgContent);
 }
 
+//creates a download link, clicking it and removing it
 function download(url) {
     const a = document.createElement('a')
     a.href = url
@@ -249,6 +249,7 @@ function download(url) {
     document.body.removeChild(a)
 }
 
+//uploads meme to the meme gallery
 function uploadImg() {
     var savedMeme = {
         url: gCanvas.toDataURL('image/jpeg'),

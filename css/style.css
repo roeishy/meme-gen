@@ -93,7 +93,7 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
   margin: 0;
-  height: 100%;
+  height: 100vh;
  }
 
 button {
@@ -218,7 +218,10 @@ header {
   .grid-container {
     grid-template-columns: repeat(2, minmax(9vh, 0fr));
     grid-auto-rows: 9vh;
-  } 
+  }
+  body{
+    height: 150vh;
+  }
 }
 
 .main-pager {
@@ -239,7 +242,7 @@ header {
 /*---------- editor  ----------*/
 .editor-container{
   gap: 10px;
-  background-color: #58c93a8c;
+  background-color: #dddddd8c;
   padding: 10px;
   border-radius: 10px;
 }
@@ -259,7 +262,7 @@ header {
   grid-template-rows: 1fr 1fr 1fr 1fr;
   grid-template-areas:
   "txt-input txt-input txt-input txt-input txt-input"
-  ". switch add-line del-line ."
+  ". . add-line del-line ."
   "inc dec align-l align-c align-r"
   "fonts fonts fonts brush strokee"
   ". facebook download upload ."
