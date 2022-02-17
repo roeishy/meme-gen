@@ -19,10 +19,10 @@
             <nav id="mainMenu" class="main-menu-wrapper">
                 <ul class="main-menu clean-list flex align-center">
                     <li>
-                        <a href="#" class="active">galery</a>
+                        <a onclick="renderGallery()" class="active">galery</a>
                     </li>
                     <li>
-                        <a href="#">memes</a>
+                        <a onclick="renderMemesGallery()">memes</a>
                     </li>
                     <li>
                         <a href="#">about</a>
@@ -34,15 +34,6 @@
 
         </section>
     </header>
-
-    <datalist id="fonts-list">
-        <option value="impact">
-        <option value="eurofbold">
-        <option value="latobold">
-        <option value="fontawesome">
-    </datalist>
-
-
 
     <datalist id="memes">
         <option value="funny">
@@ -56,6 +47,11 @@
             <input id="search-bar" list="memes" type="text" placeholder="search" oninput="filter(this.value)">
         </div>
         <section class="grid-container">
+        </section>
+    </main>
+
+    <main class="memes-gallery hide">
+        <section id="memes-gallery" class="grid-container">
         </section>
     </main>
 
@@ -100,7 +96,7 @@
                 <button class="facebook" onclick="uploadImg()">
                     <img src="images/icons/facebook-logo.png">
                 </button>
-                <button class="download" onclick="downloadImg(this)" download="meme.jpg">
+                <button class="download" onclick="downloadImg()" download="meme.jpg">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                         class="bi bi-download" viewBox="0 0 16 16">
                         <path
@@ -131,7 +127,7 @@
         </div>
     </main>
 
-
+    <script src="js/services/storage-service.js"></script>
     <script src="js/services/memes-service.js"></script>
     <script src="js/gallery-controller.js"></script>
     <script src="js/editor-controller.js"></script>

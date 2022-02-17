@@ -7,6 +7,9 @@ function init() {
 }
 
 function renderGallery() {
+    document.querySelector('.memes-gallery').classList.add("hide")
+    document.querySelector('.editor').classList.add("hide")
+    document.querySelector('.gallery').classList.remove("hide")
     const imgs = getImgs(gFilterBy);
     var strHTML = imgs.map(img =>
         `<div class="card"><img class="img${img.id}" src="${img.url}" onclick="onImg(${img.id})" /></div>`
@@ -23,10 +26,19 @@ function onImg(id) {
     setImg(id);
     document.querySelector('.gallery').classList.toggle("hide")
     document.querySelector('.editor').classList.toggle("hide")
-    initCanvas();
+    initCanvas(true);
 }
 
-
+function renderMemesGallery() {
+    document.querySelector('.gallery').classList.add("hide")
+    document.querySelector('.editor').classList.add("hide")
+    document.querySelector('.memes-gallery').classList.remove("hide")
+    const savedMemes = getSavedMemes();
+    var strHTML = savedMemes.map(savedMeme =>
+        `<div class="card"><img src="${savedMeme.url}"/></div>`
+    )
+    document.querySelector('#memes-gallery').innerHTML = strHTML.join('');
+}
 
 
 function toggleMenu() {

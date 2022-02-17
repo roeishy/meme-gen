@@ -1,6 +1,6 @@
 'use strict'
 
-var gImgs = [
+const gImgs = [
     { id: 1, url: 'images/square-meme-images/1.jpg', keywords: ['funny'] },
     { id: 2, url: 'images/square-meme-images/2.jpg', keywords: ['animal'] },
     { id: 3, url: 'images/square-meme-images/3.jpg', keywords: ['animal'] },
@@ -20,6 +20,9 @@ var gImgs = [
     { id: 17, url: 'images/square-meme-images/17.jpg', keywords: ['happy'] },
     { id: 18, url: 'images/square-meme-images/18.jpg', keywords: ['movies'] },
 ];
+
+const STORAGE_KEY = 'savedMemes'
+var gSavedMemes = [];
 
 var gMeme = {
     selectedImgId: 0,
@@ -48,6 +51,13 @@ var gMeme = {
             y: 350
         }
     ]
+}
+
+saveToStorage('defaultLines', gMeme.lines)
+gSavedMemes = loadFromStorage(STORAGE_KEY);
+
+function defaultLines() {
+    gMeme.lines = loadFromStorage('defaultLines');
 }
 
 function addLine() {
@@ -139,4 +149,13 @@ function setLineColor(color) {
 
 function setLineStroke(stroke) {
     gMeme.lines[gMeme.selectedLineIdx].stroke = stroke;
+}
+
+function saveMeme(meme) {
+    gSavedMemes.push(meme);
+    saveToStorage(STORAGE_KEY, gSavedMemes);
+}
+
+function getSavedMemes() {
+    return gSavedMemes;
 }

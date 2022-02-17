@@ -6,7 +6,10 @@ const gTouchEvs = ['touchstart', 'touchmove', 'touchend']
 var gMousePos;
 
 
-function initCanvas() {
+function initCanvas(bool = false) {
+    if (bool) {
+        defaultLines()
+    }
     var meme = getMeme();
     createCanvas();
     drawImgFromlocal(meme.selectedImgId)
@@ -229,7 +232,7 @@ function doUploadImg(imgDataUrl, onSuccess) {
         })
 }
 
-function downloadImg(elLink) {
+function downloadImg() {
     var imgContent = gCanvas.toDataURL('image/jpeg')
     download(imgContent);
 }
@@ -241,4 +244,12 @@ function download(url) {
     document.body.appendChild(a)
     a.click()
     document.body.removeChild(a)
+}
+
+function uploadImg() {
+    var savedMeme = {
+        url: gCanvas.toDataURL('image/jpeg'),
+        meme: getMeme()
+    }
+    saveMeme(savedMeme);
 }
