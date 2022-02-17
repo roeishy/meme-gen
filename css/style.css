@@ -31,6 +31,14 @@
   font-weight: normal;
   font-style: normal; }
 
+/*----------  Font Impact  ----------*/
+@font-face {
+  font-family: 'impact';
+  src: url("../fonts/impact.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal; 
+}
+
 .fa {
   display: inline-block;
   font-family: fontawesome;
@@ -48,7 +56,7 @@
   padding: 0; }
 
 .logo {
-  font-family: eurofbold, serif;
+  font-family: impact, serif;
   font-size: 2.5rem; }
   .logo span {
     color: #58c93a; }
@@ -78,7 +86,7 @@
 /*---------- Layout  ----------*/
 
 html {
-  font-family: latoregular, sans-serif;
+  font-family: impact, sans-serif;
   color: #292929; }
 
 body {
@@ -88,7 +96,7 @@ h1, h2, h3, h4, h5, h6 {
   text-transform: uppercase;
   margin: 0 0 1.25rem;
   font-weight: normal;
-  font-family: latobold, sans-serif; }
+  font-family: impact, sans-serif; }
 
 h1 {
   font-size: 3rem;
@@ -101,7 +109,7 @@ header {
   background: url("../images/header-bg.gif");
   height: 130px;
   color: #fff;
-  font-family: latobold, sans-serif; }
+  font-family: impact, sans-serif; }
   header .header-wrapper {
     height: 130px; }
   header .logo {
@@ -229,7 +237,7 @@ header {
     background: none;
     border: none;
     font-size: 1.125rem;
-    font-family: latobold, sans-serif;
+    font-family: impact, sans-serif;
     text-transform: uppercase;
     color: inherit;
     padding: 0; }
@@ -309,10 +317,25 @@ header {
 
 .stroke{
   grid-area: strokee;
+  display: grid;
 }
 
 .brush{
   grid-area: brush;
+  display: grid;
+}
+
+.btn-input{
+  width: 100%;
+  opacity: 0;
+  cursor: pointer;
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.btn-img{
+  grid-column: 1;
+  grid-row: 1;
 }
 
 .fonts{

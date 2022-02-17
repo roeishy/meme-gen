@@ -40,7 +40,7 @@ function drawText(line) {
     gCtx.lineWidth = 1;
     gCtx.strokeStyle = line.stroke;
     gCtx.fillStyle = line.color;
-    gCtx.font = `${line.size}px Arial`;
+    gCtx.font = `${line.size}px ${line.font}`;
     gCtx.textAlign = line.align;
     gCtx.fillText(line.txt, line.x, line.y);
     gCtx.strokeText(line.txt, line.x, line.y);
@@ -58,10 +58,10 @@ function onSwitch() {
 function addListeners() {
     addMouseListeners()
     addTouchListeners()
-    window.addEventListener('resize', () => {
-        // resizeCanvas()
-        // renderCanvas()
-    })
+    // window.addEventListener('resize', () => {
+    // resizeCanvas()
+    // renderCanvas()
+    // })
 }
 
 function resizeCanvas() {
@@ -92,6 +92,9 @@ function onDown(ev) {
         if (isTxtClicked(pos, meme.lines[i])) {
             selectLine(i);
             document.getElementById('txt-input').value = meme.lines[i].txt
+            document.getElementById('fonts').value = meme.lines[i].font
+            document.getElementById('text-color').value = meme.lines[i].color
+            document.getElementById('stroke-color').value = meme.lines[i].stroke
             setLineDrag(true);
         }
     }
@@ -153,5 +156,20 @@ function onIncDec(isInc) {
 function onAlign(alignDir) {
     setLineAlign(alignDir);
     // gCtx.clearRect(0, 0, gCanvas.width, gCanvas.height);
+    initCanvas();
+}
+
+function onFont(font) {
+    setLineFont(font);
+    initCanvas();
+}
+
+function onColor(color) {
+    setLineColor(color);
+    initCanvas();
+}
+
+function onStroke(stroke) {
+    setLineStroke(stroke);
     initCanvas();
 }

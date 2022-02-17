@@ -37,9 +37,9 @@
 
     <datalist id="fonts-list">
         <option value="impact">
-        <option value="animal">
-        <option value="happy">
-        <option value="movies">
+        <option value="eurofbold">
+        <option value="latobold">
+        <option value="fontawesome">
     </datalist>
 
 
@@ -83,22 +83,28 @@
                 <button class="align-r" onclick="onAlign('left')">
                     <img src="images/icons/align-right.png" ">
                 </button>
-                <button class=" brush">
-                    <img src="images/icons/brush.png">
-                </button>
-                <button class="dec" onclick="onIncDec(false)">
+                <button class=" dec" onclick="onIncDec(false)">
                     <img src="images/icons/decrease.png">
                 </button>
                 <button class="inc" onclick="onIncDec(true)">
                     <img src="images/icons/increase.png">
                 </button>
                 <button class="stroke">
-                    <img src="images/icons/text-stroke.png">
+                    <img class="btn-img" src="images/icons/text-stroke.png">
+                    <input class="btn-input" id="stroke-color" type="color" value="#000" oninput="onStroke(this.value)">
                 </button>
                 <button class="brush">
-                    <img src="images/icons/brush.png">
+                    <img class="btn-img" src="images/icons/brush.png">
+                    <input class="btn-input" id="text-color" type="color" value="#FFFFFF" oninput="onColor(this.value)">
                 </button>
-                <input class="fonts" id="fonts" list="fonts-list">
+
+
+                <select class="fonts" id="fonts" onchange="onFont(this.value)">
+                    <option>impact</option>
+                    <option>eurofbold</option>
+                    <option>latobold</option>
+                    <option>fontawesome</option>
+                </select>
             </section>
         </div>
     </main>

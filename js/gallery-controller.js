@@ -27,6 +27,8 @@ function onImg(id) {
 }
 
 
+
+
 function toggleMenu() {
     var mainMenu = document.getElementById('mainMenu');
     console.log(mainMenu);
