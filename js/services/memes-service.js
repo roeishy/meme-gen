@@ -84,7 +84,7 @@ function getImgs(key) {
     if (key === '') {
         return gImgs;
     }
-    var imgs = gImgs.filter(img => img.keywords.includes(key));
+    var imgs = gImgs.filter(img => img.keywords.some(keyWord => keyWord.includes(key)));
     return imgs;
 }
 
