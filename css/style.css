@@ -58,8 +58,6 @@
 .logo {
   font-family: impact, serif;
   font-size: 2.5rem; }
-  .logo span {
-    color: #58c93a; }
 
 .flex {
   display: flex; }
@@ -73,12 +71,6 @@
 .align-center {
   align-items: center; }
 
-.space-between {
-  justify-content: space-between; }
-
-.space-around {
-  justify-content: space-around; }
-
 .hide{
   display: none;
 }
@@ -91,16 +83,6 @@ html {
 
 body {
   margin: 0; }
-
-h1, h2, h3, h4, h5, h6 {
-  text-transform: uppercase;
-  margin: 0 0 1.25rem;
-  font-weight: normal;
-  font-family: impact, sans-serif; }
-
-h1 {
-  font-size: 3rem;
-  letter-spacing: 2px; }
 
 button {
   cursor: pointer; }
