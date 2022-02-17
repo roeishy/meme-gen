@@ -56,16 +56,6 @@ function drawText(line) {
     gCtx.strokeText(line.txt, line.x, line.y);
 }
 
-// function onSwitch() {
-//     var meme = getMeme();
-//     var numOfLines = meme.lines.length
-//     var curLineIdx = meme.selectedLineIdx
-//     var nextLineIdx = curLineIdx === numOfLines - 1 ? 0 : +1;
-//     selectLine(nextLineIdx);
-//     document.getElementById('txt-input').value = meme.lines[nextLineIdx].txt
-// }
-
-
 function addListeners() {
     addMouseListeners()
     addTouchListeners()
