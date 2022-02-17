@@ -27,7 +27,7 @@ var gMeme = {
     lines: [
         {
             drag: false,
-            txt: 'enter text',
+            txt: 'Enter Text',
             size: 50,
             align: 'center',
             color: 'white',
@@ -38,8 +38,8 @@ var gMeme = {
         },
         {
             drag: false,
-            txt: 'enter text',
-            size: 40,
+            txt: 'Enter Text',
+            size: 50,
             align: 'center',
             color: 'white',
             stroke: 'black',
@@ -48,6 +48,25 @@ var gMeme = {
             y: 350
         }
     ]
+}
+
+function addLine() {
+    var newLine = {
+        drag: false,
+        txt: 'Enter Text',
+        size: 50,
+        align: 'center',
+        color: 'white',
+        stroke: 'black',
+        font: 'impact',
+        x: 200,
+        y: 200
+    }
+    gMeme.lines.push(newLine);
+}
+
+function deleteLine() {
+    gMeme.lines.splice(gMeme.selectedLineIdx, 1)
 }
 
 

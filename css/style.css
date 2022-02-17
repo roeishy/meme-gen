@@ -266,7 +266,7 @@ header {
   grid-template-rows: 1fr 0.5fr 2fr 0.5fr;
   grid-template-areas:
   "txt-input txt-input txt-input txt-input txt-input"
-  ". switch add-row del-row ."
+  ". switch add-line del-line ."
   "inc dec align-l align-c align-r"
   "fonts fonts fonts brush strokee"
   ;
@@ -279,12 +279,12 @@ header {
   grid-area: txt-input;
 }
 
-.add-row{
-  grid-area: add-row;
+.add-line{
+  grid-area: add-line;
 }
 
-.del-row{
-  grid-area: del-row;
+.del-line{
+  grid-area: del-line;
 }
 
 .switch{

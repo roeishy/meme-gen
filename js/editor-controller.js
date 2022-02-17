@@ -173,3 +173,13 @@ function onStroke(stroke) {
     setLineStroke(stroke);
     initCanvas();
 }
+
+function onAddLine() {
+    addLine();
+    initCanvas();
+}
+
+function onDeleteLine() {
+    deleteLine()
+    initCanvas()
+}
